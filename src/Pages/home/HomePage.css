@@ -1,0 +1,28 @@
+.bg1 {
+/* To enable scrolling */
+  width: 100%;
+  background: rgb(9,60,121);
+  background: linear-gradient(180deg, rgba(9,60,121,0.7792366946778712) 0%, rgba(0,212,255,0) 75%);
+  position: relative;
+}
+
+.parallax-container {
+  position: relative;
+  height: 100vh;
+
+}
+
+.Judul {
+  position: relative;
+  z-index: 1;
+}
+
+.sub-judul {
+  position: relative;
+  z-index: 10;
+}
+
+img {
+  position: relative;
+}
+
