@@ -20,7 +20,7 @@ import GetPenangkapan from './Routes/GetPages/GetPenangkapan'
 import GetInovasi from './Routes/GetPages/GetInovasi'
 import GetEvent from './Routes/GetPages/GetEvent'
 import GetRelawan from './Routes/GetPages/GetRelawan'
-import AdminPage from './Routes/AdminPages/adminPage'
+import AdminPage from './Routes/AdminPages/AdminPage'
 
 
 function App() {
