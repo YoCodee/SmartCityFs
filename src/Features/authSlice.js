@@ -6,7 +6,7 @@ export const LoginUser = createAsyncThunk(
     'auth/loginUser',
     async ({ email, password }, { rejectWithValue }) => {
         try {
-            const response = await axios.post('http://localhost:3000/api/user/login', { email, password });
+            const response = await axios.post('https://web-city-server.vercel.app/api/user/login', { email, password });
             return response.data;
         } catch (error) {
             return rejectWithValue(error.response.data);
@@ -25,7 +25,7 @@ export const getMe = createAsyncThunk(
                     Authorization: `Bearer ${token}`,
                 },
             };
-            const response = await axios.get('http://localhost:3000/api/user/me', config);
+            const response = await axios.get('https://web-city-server.vercel.app/api/user/me', config);
             return response.data;
         } catch (error) {
             return rejectWithValue(error.response.data);

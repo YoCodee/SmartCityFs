@@ -90,7 +90,7 @@ const ProductPage = () => {
 
   useEffect(() => {
     if (user) {
-      axios.get('http://localhost:3000/api/user/reward-history', {
+      axios.get('https://web-city-server.vercel.app/api/user/reward-history', {
         params: { userId: user._id }
       })
         .then(response => {
@@ -104,7 +104,7 @@ const ProductPage = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/user/reward")
+      .get("https://web-city-server.vercel.app/api/user/reward")
       .then((response) => {
         setReward(response.data);
       })

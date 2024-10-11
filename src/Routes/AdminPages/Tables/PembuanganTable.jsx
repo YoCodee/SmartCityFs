@@ -9,7 +9,7 @@ function PembuanganTable() {
     // Fetch data from backend
     const fetchTable = async () => {
         try {
-            const response = await axios.get("http://localhost:3000/api/pembuangan");
+            const response = await axios.get("https://web-city-server.vercel.app/api/pembuangan");
             return response.data;
             setTableData(response.data);
             console.log(response.data);
@@ -21,7 +21,7 @@ function PembuanganTable() {
     // Approve a report
     const updateBookingStatus = async (reportId) => {
         try {
-            const response = await axios.put(`http://localhost:3000/api/pembuangan/approve/${reportId}`);
+            const response = await axios.put(`https://web-city-server.vercel.app/api/pembuangan/approve/${reportId}`);
             alert(response.data.message); // Show success message
             fetchTable(); // Refresh the table after approval
         } catch (error) {

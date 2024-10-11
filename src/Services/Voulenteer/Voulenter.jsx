@@ -14,7 +14,7 @@ function Voulenter() {
   // Fungsi untuk mengambil data laporan
   const fetchPerbaikan = async () => {
     try {
-      const res = await axios.get(`http://localhost:3000/api/perbaikan`);
+      const res = await axios.get(`https://web-city-server.vercel.app/api/perbaikan`);
       return res.data; // Mengembalikan data
     } catch (error) {
       console.error('Error fetching Perbaikan:', error);
@@ -24,7 +24,7 @@ function Voulenter() {
 
   const fetchInovasi = async () => {
     try {
-      const res = await axios.get(`http://localhost:3000/api/inovasi`);
+      const res = await axios.get(`https://web-city-server.vercel.app/api/inovasi`);
       return res.data;
     } catch (error) {
       console.error('Error fetching Inovasi:', error);
@@ -34,7 +34,7 @@ function Voulenter() {
 
   const fetchPembuanganSampah = async () => {
     try {
-      const res = await axios.get(`http://localhost:3000/api/pembuangan`);
+      const res = await axios.get(`https://web-city-server.vercel.app/api/pembuangan`);
       return res.data;
     } catch (error) {
       console.error('Error fetching Pembuangan Sampah:', error);
@@ -44,7 +44,7 @@ function Voulenter() {
 
   const fetchPenangkapan = async () => {
     try {
-      const res = await axios.get(`http://localhost:3000/api/penangkapan`);
+      const res = await axios.get(`https://web-city-server.vercel.app/api/penangkapan`);
       return res.data;
     } catch (error) {
       console.error('Error fetching Penangkapan:', error);
@@ -87,7 +87,7 @@ function Voulenter() {
   // Fungsi untuk membuat task berdasarkan laporan yang dipilih
   const createTask = async (reportId, reportType) => {
     try {
-      const response = await axios.post('http://localhost:3000/api/create-task', {
+      const response = await axios.post('https://web-city-server.vercel.app/api/create-task', {
         reportId,
         reportType,
 

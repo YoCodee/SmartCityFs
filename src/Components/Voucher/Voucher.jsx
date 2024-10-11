@@ -12,7 +12,7 @@ const Voucher = ({ className, text, icon, title, persentase, date, point, reward
 
   const ClaimReward = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/api/user/claim-reward", {
+      const response = await axios.post("https://web-city-server.vercel.app/api/user/claim-reward", {
         rewardId: rewardId // Mengirimkan ID reward
       });
       setClaimStatus(response.data.message); // Menyimpan pesan respons klaim reward

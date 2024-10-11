@@ -9,7 +9,7 @@ function EventTable() {
     // Fetch data from backend
     const fetchTable = async () => {
         try {
-            const response = await axios.get("http://localhost:3000/api/event");
+            const response = await axios.get("https://web-city-server.vercel.app/api/event");
             return response.data;
             setTableData(response.data);
             console.log(response.data);
@@ -21,7 +21,7 @@ function EventTable() {
     // Approve a report
     const updateBookingStatus = async (reportId) => {
         try {
-            const response = await axios.put(`http://localhost:3000/api/event/${reportId}`);
+            const response = await axios.put(`https://web-city-server.vercel.app/api/event/${reportId}`);
             alert(response.data.message); // Show success message
             fetchTable(); // Refresh the table after approval
         } catch (error) {

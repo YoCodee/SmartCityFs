@@ -10,7 +10,7 @@ function GetPembuangan() {
     useEffect(() => {
         if(user){
             axios
-            .get(`http://localhost:3000/api/pembuangan/user/${user.id}`)
+            .get(`https://web-city-server.vercel.app/api/pembuangan/user/${user.id}`)
             .then((res) => {
                 setData(res.data);
                 console.log(res.data)

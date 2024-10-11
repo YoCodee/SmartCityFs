@@ -10,7 +10,7 @@ function GetInovasi() {
     useEffect(() => {
         if(user){
             axios
-            .get(`http://localhost:3000/api/inovasi/user/${user.id}`)
+            .get(`https://web-city-server.vercel.app/api/inovasi/user/${user.id}`)
             .then((res) => {
                 setData(res.data);
                 console.log(res.data)

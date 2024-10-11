@@ -12,7 +12,7 @@ function GetPenangkapan() {
     useEffect(() => {
         if(user){
             axios
-            .get(`http://localhost:3000/api/penangkapan/user/${user._id}`, {
+            .get(`https://web-city-server.vercel.app/api/penangkapan/user/${user._id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

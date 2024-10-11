@@ -35,7 +35,7 @@ function Penangkapan() {
     setSuccess("");
 
     try {
-      const response = await axios.post('http://localhost:3000/api/penangkapan', {
+      const response = await axios.post('https://web-city-server.vercel.app/api/penangkapan', {
         ...formData,
         userId: user._id,
         images, // Include images in the POST request

@@ -7,8 +7,10 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 
 
+
 function Event() {
-  const user = useSelector((state) => state.auth.user);
+  const {user, token} = useSelector((state) => state.auth);
+
   const [formData,setFormData] = useState({
     namaOrganisasi : "",
     time : "",
@@ -39,11 +41,16 @@ function Event() {
     setSuccess("");
 
     try {
-      const response = await axios.post('http://localhost:3000/api/event', {
+      const response = await axios.post('https://web-city-server.vercel.app/api/event', {
         ...formData,
-        userId: user._id,
+        user: user._id,
         images, // Include images in the POST request
-      });
+      }
+    ,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    });
 
       setLoading(false);
       setSuccess("Laporan berhasil ditambahkan!");
