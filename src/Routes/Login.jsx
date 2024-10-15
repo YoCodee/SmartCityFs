@@ -28,7 +28,7 @@ const Login = () => {
     .catch((message) => {
         console.error('Login failed:', message);
     });
-    window.location.replace("/")
+    navigate("/");
 };
 
 
