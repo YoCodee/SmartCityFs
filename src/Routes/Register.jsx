@@ -17,7 +17,7 @@ const Register = () => {
   const Register = async(e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3000/api/user/register", {
+      await axios.post("https://web-city-server.vercel.app/api/user/register", {
         name: name,
         email: email,
         password: password,
