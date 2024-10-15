@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 
 function Voulenter() {
-  const { user } = useSelector((state) => state.auth);
+  const { user, token } = useSelector((state) => state.auth);
   const [perbaikanData, setPerbaikanData] = useState([]); // State untuk laporan perbaikan
   const [inovasiData, setInovasiData] = useState([]); // State untuk laporan inovasi
   const [penangkapanData, setPenangkapanData] = useState([]); // State untuk laporan penangkapan
@@ -88,9 +88,15 @@ function Voulenter() {
   const createTask = async (reportId, reportType) => {
     try {
       const response = await axios.post('https://web-city-server.vercel.app/api/create-task', {
+        user: user._id,
         reportId,
         reportType,
 
+      }
+      ,{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
       });
       setMessage(response.data.message);
       console.log(response.data) // Tampilkan pesan sukses
@@ -135,7 +141,7 @@ function Voulenter() {
             <strong>Status:</strong> {report.status}
           </p>
           <button
-            onClick={() => createTask(report._id, 'perbaikan')}
+            onClick={() => createTask(report._id, 'Perbaikan')}
             className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mt-4 transition duration-300"
           >
             Buat Task

@@ -4,23 +4,27 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 library.add(faShoppingBag);
 
 const Voucher = ({ className, text, icon, title, persentase, date, point, rewardId }) => {
+  const {user} = useSelector((state) => state.auth);
   const [claimStatus, setClaimStatus] = useState("");
   const [copyStatus, setCopyStatus] = useState("");
 
   const ClaimReward = async () => {
     try {
       const response = await axios.post("https://web-city-server.vercel.app/api/user/claim-reward", {
+        userId: user._id,
         rewardId: rewardId // Mengirimkan ID reward
       });
       setClaimStatus(response.data.message); // Menyimpan pesan respons klaim reward
     } catch (error) {
-      console.log(error)
-      setCopyStatus(error.response?.data?.message || "Terjadi kesalahan");
+      console.log('Error:', error); // Log additional error details
+      setCopyStatus(error.response?.data?.message || "Terjadi kesalahan saat mengklaim reward. Silakan coba lagi nanti.");
     }
   };
+  
 
   return (
     <>

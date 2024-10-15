@@ -7,7 +7,7 @@ import UploadWidget from '../../Components/uploadWidget/UploadWidget';
 import { useSelector } from 'react-redux';
 
 function AddPerbaikanJalan() {
-  const user = useSelector((state) => state.auth.user);
+  const {user, token} = useSelector((state) => state.auth);
   // State untuk menyimpan data form
   const [formData, setFormData] = useState({
     kerusakan: "",
@@ -39,8 +39,12 @@ function AddPerbaikanJalan() {
     try {
       const response = await axios.post('https://web-city-server.vercel.app/api/perbaikan', {
         ...formData,
-        userId: user._id,
+        user: user._id,
         images, // Include images in the POST request
+      },{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
       });
 
       setLoading(false);

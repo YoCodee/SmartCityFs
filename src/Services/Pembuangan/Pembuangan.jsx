@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 
 function Pembuangan() {
-  const user = useSelector((state) => state.auth.user);
+  const {user, token} = useSelector((state) => state.auth);
   const [formData, setFormData] = useState({
     jenis : "",
     Waktu : "",
@@ -34,8 +34,12 @@ function Pembuangan() {
     try {
       const response = await axios.post('https://web-city-server.vercel.app/api/pembuangan', {
         ...formData,
-        userId: user._id,
+        user: user._id,
         images, // Include images in the POST request
+      },{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
       });
 
       setLoading(false);

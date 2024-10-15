@@ -2,14 +2,20 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import $ from 'jquery';
 import 'datatables.net';
+import { useSelector } from 'react-redux';
 
 function RelawanTable() {
+    const {token} = useSelector((state) => state.auth);
     const [tableData, setTableData] = useState([]);
 
     // Fetch data from backend
     const fetchTable = async () => {
         try {
-            const response = await axios.get("https://web-city-server.vercel.app/api/tasks");
+            const response = await axios.get("https://web-city-server.vercel.app/api/tasks", {
+                headers: {
+                    Authorization : `Bearer ${token}`
+                }
+            });
             return response.data;
             setTableData(response.data);
             console.log(response.data);
@@ -21,7 +27,13 @@ function RelawanTable() {
     // Approve a report
     const updateBookingStatus = async (reportId) => {
         try {
-            const response = await axios.put(`https://web-city-server.vercel.app/api/tasks/${reportId}`);
+            const response = await axios.put(`https://web-city-server.vercel.app/api/tasks/${reportId}`,{
+
+            },{
+                headers: {
+                    Authorization : `Bearer ${token}`
+                }
+            });
             console.log(response)
             alert(response.data.message); // Show success message
             fetchTable(); // Refresh the table after approval

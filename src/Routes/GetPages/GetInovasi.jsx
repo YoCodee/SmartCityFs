@@ -4,13 +4,17 @@ import { useSelector } from 'react-redux'
 import CardGetInovasi from '../../Components/CardGet/CardGetInovasi'
 
 function GetInovasi() {
-    const {user} = useSelector((state) => state.auth);
+    const {user, token} = useSelector((state) => state.auth);
     const [data,setData] = useState();
 
     useEffect(() => {
         if(user){
             axios
-            .get(`https://web-city-server.vercel.app/api/inovasi/user/${user.id}`)
+            .get(`https://web-city-server.vercel.app/api/inovasi/user/${user._id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            })
             .then((res) => {
                 setData(res.data);
                 console.log(res.data)

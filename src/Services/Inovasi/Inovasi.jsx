@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import UploadWidget from '../../Components/uploadWidget/UploadWidget';
 function Inovasi() {
-  const user = useSelector((state) => state.auth.user);
+  const {user, token} = useSelector((state) => state.auth);
   const [formData, setFormData] = useState({
     JenisInovasi : "",
     Uang: "",
@@ -34,8 +34,12 @@ function Inovasi() {
     try {
       const response = await axios.post('https://web-city-server.vercel.app/api/inovasi', {
         ...formData,
-        userId: user._id,
+        user: user._id,
         images, // Include images in the POST request
+      },{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
       });
 
       setLoading(false);

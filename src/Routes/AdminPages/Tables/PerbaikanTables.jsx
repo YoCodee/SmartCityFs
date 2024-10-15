@@ -3,7 +3,10 @@ import axios from 'axios';
 import $ from 'jquery';
 import 'datatables.net';
 
+import { useSelector } from 'react-redux';
+
 function PerbaikanTables() {
+    const {token} = useSelector((state) => state.auth);
     const [tableData, setTableData] = useState([]);
 
     // Fetch data from backend
@@ -21,7 +24,16 @@ function PerbaikanTables() {
     // Approve a report
     const updateBookingStatus = async (reportId) => {
         try {
-            const response = await axios.put(`https://web-city-server.vercel.app/api/perbaikan/approve/${reportId}`);
+            const response = await axios.put(`https://web-city-server.vercel.app/api/perbaikan/approve/${reportId}`,
+                {
+
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
             alert(response.data.message); // Show success message
             fetchTable(); // Refresh the table after approval
         } catch (error) {

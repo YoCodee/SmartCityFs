@@ -83,15 +83,17 @@ const PDFDocument = ({ reward }) => {
 };
 
 const ProductPage = () => {
-  const user = useSelector((state) => state.auth.user);
+  const {user,token} = useSelector((state) => state.auth);
   const [data, setData] = useState([]);
   const [reward, setReward] = useState([]);
   const bgColors = ['bg-yellow-400', 'bg-red-400', 'bg-green-400', 'bg-purple-400', 'bg-blue-400', 'bg-gray-400'];
 
   useEffect(() => {
     if (user) {
-      axios.get('https://web-city-server.vercel.app/api/user/reward-history', {
-        params: { userId: user._id }
+      axios.get(`https://web-city-server.vercel.app/api/user/reward-history/${user.name}`,{
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       })
         .then(response => {
           setData(response.data);
@@ -126,7 +128,7 @@ const ProductPage = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-14">
         {reward.map((rewardItem, index) => (
           <Voucher
-            key={rewardItem.id}
+            key={rewardItem._id}
             className={`w-[350px] ${bgColors[index % bgColors.length]}`} // Assign background color based on index
             text="sm:text-[20px]"
             icon={<FontAwesomeIcon icon={faStar} className="text-black" />}
