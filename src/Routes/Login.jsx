@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { LoginUser } from '../Features/authSlice'
 import {  useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { getMe } from '../Features/authSlice'
 
 const Login = () => {
   const [email, setEmail] = useState("")
@@ -13,23 +14,30 @@ const Login = () => {
   const {user, isLoading, isError, isSuccess, message} = useSelector((state) => state.auth);
 
   useEffect(() => {
-    if(user || isSuccess){
-      navigate("/")
+    if (user || isSuccess) {
+      dispatch(getMe()) // Panggil getMe setelah sukses login
+      .unwrap()
+      .then(() => {
+        navigate('/'); // Setelah dapat user, redirect ke halaman utama
+      })
+      .catch((message) => {
+        console.error('Failed to fetch user data:', message);
+      });
     }
   }, [user, isSuccess, isError, navigate, dispatch]);
 
   const Auth = (e) => {
     e.preventDefault();
     dispatch(LoginUser({ email, password }))
-    .unwrap()
-    .then(() => {
+      .unwrap()
+      .then(() => {
         console.log('Logged in successfully');
-    })
-    .catch((message) => {
+      })
+      .catch((message) => {
         console.error('Login failed:', message);
-    });
-    navigate("/");
-};
+      });
+  };
+
 
 
 

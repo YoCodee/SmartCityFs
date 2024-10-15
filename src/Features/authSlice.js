@@ -36,48 +36,69 @@ export const getMe = createAsyncThunk(
 const authSlice = createSlice({
     name: 'auth',
     initialState: {
-        user: null,
+        user: JSON.parse(localStorage.getItem('user')) || null,
         token: localStorage.getItem('token') || null,
         loading: false,
-        error: null,
+        isSuccess: false,
+        isError: false,
+        message: '',
     },
     reducers: {
         logout: (state) => {
             state.user = null;
             state.token = null;
+            state.isSuccess = false;
+            state.isError = false;
+            state.message = '';
             localStorage.removeItem('token');
+            localStorage.removeItem('user');
         },
+
+        reset: (state) => {
+            state.loading = false;
+            state.isError = false;
+            state.isSuccess = false;
+            state.message = '';
+        }
     },
     extraReducers: (builder) => {
         // Handle login
         builder.addCase(LoginUser.pending, (state) => {
             state.loading = true;
-            state.error = null;
+            state.isError = false;
+            state.message = '';
         });
         builder.addCase(LoginUser.fulfilled, (state, action) => {
             state.loading = false;
+            state.isSuccess = true;
             state.token = action.payload.token;
             localStorage.setItem('token', action.payload.token);
+            // Optionally, you can directly fetch the user here or update the user state
         });
         builder.addCase(LoginUser.rejected, (state, action) => {
             state.loading = false;
-            state.error = action.payload.message;
+            state.isError = true;
+            state.message = action.payload.message || 'Login failed';
         });
 
         // Handle fetching user data
         builder.addCase(getMe.pending, (state) => {
             state.loading = true;
+            state.isError = false;
         });
         builder.addCase(getMe.fulfilled, (state, action) => {
             state.loading = false;
+            state.isSuccess = true;
             state.user = action.payload;
+            localStorage.setItem('user', JSON.stringify(action.payload)); // Store user data in localStorage
         });
         builder.addCase(getMe.rejected, (state, action) => {
             state.loading = false;
-            state.error = action.payload.message;
+            state.isError = true;
+            state.message = action.payload.message || 'Fetching user failed';
         });
     },
 });
 
-export const { logout } = authSlice.actions;
+export const { logout, reset } = authSlice.actions;
 export default authSlice.reducer;
