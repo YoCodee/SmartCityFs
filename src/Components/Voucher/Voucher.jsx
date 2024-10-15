@@ -24,7 +24,9 @@ const Voucher = ({ className, text, icon, title, persentase, date, point, reward
       setCopyStatus(error.response?.data?.message || "Terjadi kesalahan saat mengklaim reward. Silakan coba lagi nanti.");
     }
   };
-  
+  console.log("User points:", user.points);
+
+
 
   return (
     <>
