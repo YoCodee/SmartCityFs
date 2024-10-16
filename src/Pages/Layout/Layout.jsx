@@ -13,7 +13,7 @@ const Layout = () => {
 
   useEffect(() => {
     // Check if user or token is missing
-    if (!user && token) {
+    if (!user) {
       // If token exists, try to fetch the user data
       dispatch(getMe())
         .unwrap()
@@ -22,12 +22,8 @@ const Layout = () => {
         })
         .catch((message) => {
           console.error('Error fetching user data:', message);
-          // If there's an error (e.g., invalid token), redirect to login
-          navigate('/login');
+
         });
-    } else if (!token) {
-      // If no token is found, redirect to login
-      navigate('/login');
     }
   }, [dispatch, navigate, user, token]);
 

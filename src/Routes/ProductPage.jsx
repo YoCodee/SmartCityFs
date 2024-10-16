@@ -122,7 +122,7 @@ const ProductPage = () => {
     const year = date.getFullYear();
     return `${day}-${month}-${year}`;
   };
-
+ 
   return (
     <div>
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-14">
@@ -135,7 +135,7 @@ const ProductPage = () => {
             title={rewardItem.name}
             persentase={rewardItem.persentase}
             date={rewardItem.description}
-            point={rewardItem.pointsRequired}
+            pointsRequired={rewardItem.pointsRequired}
             rewardId={rewardItem._id}
           />
         ))}

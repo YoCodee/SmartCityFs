@@ -7,24 +7,27 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 library.add(faShoppingBag);
 
-const Voucher = ({ className, text, icon, title, persentase, date, point, rewardId }) => {
-  const {user} = useSelector((state) => state.auth);
+const Voucher = ({ className, text, icon, title, persentase, date, pointsRequired, rewardId }) => {
+  const {user, token} = useSelector((state) => state.auth);
   const [claimStatus, setClaimStatus] = useState("");
   const [copyStatus, setCopyStatus] = useState("");
 
   const ClaimReward = async () => {
     try {
-      const response = await axios.post("https://web-city-server.vercel.app/api/user/claim-reward", {
-        userId: user._id,
+      const response = await axios.post(`https://web-city-server.vercel.app/api/user/claim-reward/${user.name}`, {
         rewardId: rewardId // Mengirimkan ID reward
-      });
+      },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
       setClaimStatus(response.data.message); // Menyimpan pesan respons klaim reward
     } catch (error) {
       console.log('Error:', error); // Log additional error details
       setCopyStatus(error.response?.data?.message || "Terjadi kesalahan saat mengklaim reward. Silakan coba lagi nanti.");
     }
   };
-  console.log("User points:", user.points);
 
 
 
@@ -45,7 +48,7 @@ const Voucher = ({ className, text, icon, title, persentase, date, point, reward
         </div>
       </div>
       <div className="copy-button">
-        <input id="copyvalue" type="text" className='p-2 text-center pr-8 font-bold text-black' readOnly value={point} />
+        <input id="copyvalue" type="text" className='p-2 text-center pr-8 font-bold text-black' readOnly value={pointsRequired} />
         <button onClick={ClaimReward} className="copybtn">CLAIM</button>
       </div>
       
