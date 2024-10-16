@@ -26,7 +26,7 @@ const VoucherPage = () => {
         title="Voucher Belanja"
         persentase="10%"
         date="30 Desember 2024"
-        point="100 Point"
+        pointsRequired="100 Point"
       />
       <Voucher 
         className="bg-red-400 w-[450px]"
@@ -36,7 +36,7 @@ const VoucherPage = () => {
         title="Voucher Token Listrik"
         persentase="20%"
         date="30 Desember 2024"
-        point="150 Point"
+        pointsRequired="150 Point"
       />
       <Voucher 
         className="bg-green-400 w-[450px]"
@@ -46,7 +46,7 @@ const VoucherPage = () => {
         title="Voucher Transportasi"
         persentase="50%"
         date="30 Desember 2024"
-        point="250 Point"
+        pointsRequired="250 Point"
       />
       <Voucher 
         className="bg-purple-400 w-[450px]"
@@ -56,7 +56,7 @@ const VoucherPage = () => {
         title="Voucher Bioskop"
         persentase="50%"
         date="30 Desember 2024"
-        point="250 Point"
+        pointsRequired="250 Point"
       />
       <Voucher 
         className="bg-blue-400 w-[450px]"
@@ -66,7 +66,7 @@ const VoucherPage = () => {
         title="Voucher Rumah Sakit"
         persentase="60%"
         date="30 Desember 2024"
-        point="400 Point"
+        pointsRequired="400 Point"
       />
       <Voucher 
         className="bg-gray-400  w-[450px]"
@@ -76,7 +76,7 @@ const VoucherPage = () => {
         title="Sertifikat Top"
         persentase="100%"
         date="30 Desember 2024"
-        point="500 Point"
+        pointsRequired="500 Point"
       />
       </div>
     </div>

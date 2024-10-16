@@ -105,7 +105,7 @@ const FAQ = () => {
                 <h1 className='text-3xl font-bold my-3 pl-5 text-black underline'>Agenda</h1>
             </div>
             <div className=" px-5 w-full h-full text-white font-bold  flex p-4 flex-col gap-5 ">
-            {data?.map((item) => (
+            {data?.slice(0, 3).map((item) => (
                             <div key={item?.id} className="flex flex-wrap w-full border-b-2">
                                 <div className="box100 bg-[#145593] px-4 py-4 w-32 rounded-xl mb-2">
                                     {/* Menggunakan formatDate untuk menampilkan tanggal */}

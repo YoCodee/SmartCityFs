@@ -35,7 +35,7 @@ const HomePage = () => {
             className="Judul"
             style={{ transform: `translateY(${scrollY * 0.7}px)` }} // Parallax effect for H1
           >
-            <h1 className='font-bold text-3xl sm:text-6xl'>SMART CITIES</h1>
+            <h1 className=' font-bold text-3xl sm:text-6xl'>SMART <span className='text'>CITIES</span> </h1>
           </div>
           <div className="sub-judul" style={{ transform: `translateY(${scrollY * 0.7}px)` }}>
             <h3>For your future City</h3>
