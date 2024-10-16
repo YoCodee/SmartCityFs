@@ -12,7 +12,7 @@ const FAQ = () => {
 
     useEffect(() => {
         axios
-        .get('http://localhost:3000/api/event')
+        .get('https://web-city-server.vercel.app/api/event')
         .then((res) => {
             setData(res.data)
             console.log(res.data)
