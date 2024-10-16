@@ -57,12 +57,12 @@ const FAQ = () => {
 
             <button onClick={toggle} className="box1 bg-white w-full rounded-xl px-2 py-2">
             <div className="flex justify-between">
-                <h1 className='font-bold'>Lorem ipsum dolor sit amet consectetur ?</h1><span><FontAwesomeIcon icon={faArrowDown} /></span>
+                <h1 className='font-bold'>Apakah Website ini Bisa digunakan Secara Online ?</h1><span><FontAwesomeIcon icon={faArrowDown} /></span>
                 </div>
                 {
                     open ? (
                         <div className="flex">
-                        <h1>Buka dk ka</h1>
+                        <h1>Tentu Website ini berbasis Online dan sudah terhubung dengan Database pemerintah Masih Daerah.</h1>
                         </div>
                     ) :(
                         null
@@ -71,12 +71,12 @@ const FAQ = () => {
             </button>
             <button onClick={toggle1} className="box1 bg-white w-full rounded-xl px-2 py-2">
             <div className="flex justify-between">
-                <h1 className='font-bold'>Lorem ipsum dolor sit amet consectetur ?</h1><span><FontAwesomeIcon icon={faArrowDown} /></span>
+                <h1 className='font-bold'>Apakah website ini masih tahap pembuatan ?</h1><span><FontAwesomeIcon icon={faArrowDown} /></span>
                 </div>
                 {
                     open1 ? (
                         <div className="flex">
-                        <h1>Buka dk ka</h1>
+                        <h1>Iya Website ini hanya Website pembuatan belum masuk tahap development </h1>
                         </div>
                     ) :(
                         null
@@ -85,12 +85,12 @@ const FAQ = () => {
             </button>
             <button onClick={toggle2} className="box1 bg-white w-full rounded-xl px-2 py-2">
             <div className="flex justify-between">
-                <h1 className='font-bold'>Lorem ipsum dolor sit amet consectetur ?</h1><span><FontAwesomeIcon icon={faArrowDown} /></span>
+                <h1 className='font-bold'>Apakah bisa membuat Task seblum Login ?</h1><span><FontAwesomeIcon icon={faArrowDown} /></span>
                 </div>
                 {
                     open2 ? (
                         <div className="flex">
-                        <h1>Buka dk ka</h1>
+                        <h1>Tidak , tentu kamu harus Login terlebih dahulu</h1>
                         </div>
                     ) :(
                         null
